@@ -1,7 +1,7 @@
 package com.dongho.dev.lecture.inheritance
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 open class Human(val name: String, var age: Int) {
     var country: String = ""

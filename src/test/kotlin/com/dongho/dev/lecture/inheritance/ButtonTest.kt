@@ -1,7 +1,7 @@
 package com.dongho.dev.lecture.inheritance
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
 
 class ButtonTest {

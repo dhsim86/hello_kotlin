@@ -1,6 +1,6 @@
 package com.dongho.dev.lecture.`interface`
 
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
 
 interface Clickable {
