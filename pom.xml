@@ -96,11 +96,6 @@
                         <plugin>jpa</plugin>
                         <plugin>no-arg</plugin>
                     </compilerPlugins>
-                    <pluginOptions>
-                        <option>all-open:annotation=org.springframework.stereotype.Component</option>
-                        <!-- Call instance initializers in the synthetic constructor -->
-                        <!-- <option>no-arg:invokeInitializers=true</option> -->
-                    </pluginOptions>
                 </configuration>
                 <dependencies>
                     <dependency>
