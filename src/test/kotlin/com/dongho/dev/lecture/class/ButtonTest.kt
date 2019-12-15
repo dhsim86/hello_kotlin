@@ -9,6 +9,7 @@ class ButtonTest {
     @Test
     @DisplayName("Button - No Constructors")
     fun buttonTest0() {
+
         class Button {
             var id: Int = 0
         }
@@ -20,6 +21,7 @@ class ButtonTest {
     @Test
     @DisplayName("Button - Primary Constructor")
     fun buttonTest1() {
+
         class Button(_id: Int) {
             val id: Int = _id
         }
@@ -31,6 +33,7 @@ class ButtonTest {
     @Test
     @DisplayName("Button - Primary Constructor 2")
     fun buttonTest2() {
+
         class Button(val id: Int)
 
         val button = Button(10)
@@ -40,6 +43,7 @@ class ButtonTest {
     @Test
     @DisplayName("Button - Primary Constructor 2")
     fun buttonTest3() {
+
         // _id Is Not Field of Button
         class Button(_id: Int, val id: Int)
 
@@ -50,6 +54,7 @@ class ButtonTest {
     @Test
     @DisplayName("Button - Primary Constructor 2")
     fun buttonTest4() {
+
         // _displayName is Not Field of Button
         class Button(val id: Int, val name: String, _displayName: String) {
             val displayName: String = _displayName

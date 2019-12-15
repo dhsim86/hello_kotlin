@@ -9,6 +9,7 @@ class ButtonTest {
     @Test
     @DisplayName("Inheritance - (Primary - Primary)")
     fun inheritanceTest() {
+
         open class Book(val title: String, var price: Int) {
             open fun printInfo() {
                 println("Title: $title, Price: $price")
@@ -31,6 +32,7 @@ class ButtonTest {
     @Test
     @DisplayName("Inheritance - (No Primary - Primary)")
     fun inheritanceTest2() {
+
         open class Book {
             val title = "book"
             var price = 2000
@@ -58,6 +60,7 @@ class ButtonTest {
     @Test
     @DisplayName("Inheritance - (No Primary - (No Primary + Secondary)")
     fun inheritanceTest3() {
+
         open class Book {
             val title = "book"
             var price = 2000
@@ -91,6 +94,7 @@ class ButtonTest {
     @Test
     @DisplayName("Inheritance - (No Primary - (Primary + Secondary)")
     fun inheritanceTest4() {
+
         open class Book {
             val title = "book"
             var price = 2000
