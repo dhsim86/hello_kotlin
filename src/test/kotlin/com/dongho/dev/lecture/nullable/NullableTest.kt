@@ -32,6 +32,16 @@ class Person(val name: String, val company: Company?)
 class NullableTest {
 
     @Test
+    @DisplayName("nullable test with If")
+    fun nullableTestIf() {
+        val bitmap: Bitmap? = createBitmap(10, 10)
+
+        if (bitmap != null) {
+            assertThat(bitmap.size).isEqualTo(100)
+        }
+    }
+
+    @Test
     @DisplayName("nullable test")
     fun nullableTest() {
         val bitmap: Bitmap? = createBitmap(10, 10)
