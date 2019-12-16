@@ -58,4 +58,30 @@ class WhileForTest {
         assertThat(a).isEqualTo(6)
     }
 
+    @Test
+    @DisplayName("for with array, map Test")
+    fun forWithArrayAndMapTest() {
+        var list = arrayListOf("Hello", "World!")
+        var map = hashMapOf(Pair(1, "Hello"), Pair(2, "World!"))
+
+        // Hello World!
+        for (str in list) {
+            print(str)
+            print(" ")
+        }
+        println()
+
+        //0: Hello
+        //1: World!
+        for ((index, str) in list.withIndex()) {
+            println("${index}: ${str}")
+        }
+
+        //1: Hello
+        //2: World!
+        for ((key, str) in map) {
+            println("${key}: ${str}")
+        }
+    }
+
 }
