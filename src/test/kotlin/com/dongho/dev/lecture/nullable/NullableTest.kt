@@ -20,6 +20,15 @@ fun createBitmap(width: Int, height: Int): Bitmap? {
     return null
 }
 
+fun drawBitmap(bitmap: Bitmap) {
+    println("drawBitmap")
+}
+
+class Address(val st: String, val zipCode: Int, var city: String)
+class Company(val name: String, val addr: Address?)
+class Person(val name: String, val company: Company?)
+
+
 class NullableTest {
 
     @Test
@@ -56,6 +65,63 @@ class NullableTest {
         // if bitmap is null, throw illegalException
         assertFailsWith(IllegalStateException::class) {
             bitmap?.size ?: throw IllegalStateException("null")
+        }
+    }
+
+    @Test
+    @DisplayName("nullable chaining Test")
+    fun nullableChainingTest() {
+        val person = Person("test", null)
+
+        assertThat(person?.company?.addr).isNull()
+    }
+
+    @Test
+    @DisplayName("nullable assign Test")
+    fun nullableAssignTest() {
+        val person = Person("test", null)
+        person.company?.addr?.city = "bundang";
+
+        assertThat(person.company).isNull()
+        assertThat(person.company?.addr).isNull()
+        assertThat(person.company?.addr?.city).isNull()
+    }
+
+    @Test
+    @DisplayName("nullable assign Test2")
+    fun nullableAssignTest2() {
+        val address = Address("street", 16384, "test")
+        val company = Company("company", address)
+        val person = Person("name", company)
+
+        person.company?.addr?.city = "bundang";
+
+        assertThat(person.company).isNotNull
+        assertThat(person.company?.addr).isNotNull
+        assertThat(person.company?.addr?.city).isEqualTo("bundang")
+    }
+
+    @Test
+    @DisplayName("nullable test with Null and NullPointerException")
+    fun nullableTestWithNullAndNullPointerException() {
+        val bitmap: Bitmap? = createBitmap(0, 0)
+
+        // if bitmap is null, throw illegalException
+        assertFailsWith(NullPointerException::class) {
+            bitmap!!.size
+        }
+    }
+
+    @Test
+    @DisplayName("let test")
+    fun letTest() {
+        val bitmap: Bitmap? = createBitmap(0, 0)
+
+        // Compile Error
+        // drawBitmap(bitmap)
+
+        bitmap?.let {
+            drawBitmap(it)
         }
     }
 
