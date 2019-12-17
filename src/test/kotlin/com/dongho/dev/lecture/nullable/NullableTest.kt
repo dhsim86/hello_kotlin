@@ -126,11 +126,16 @@ class NullableTest {
     @DisplayName("let test")
     fun letTest() {
         val bitmap: Bitmap? = createBitmap(0, 0)
+        val bitmap2: Bitmap? = createBitmap(10, 10)
 
         // Compile Error
         // drawBitmap(bitmap)
 
         bitmap?.let {
+            drawBitmap(it)
+        }
+
+        bitmap2?.let {
             drawBitmap(it)
         }
     }
