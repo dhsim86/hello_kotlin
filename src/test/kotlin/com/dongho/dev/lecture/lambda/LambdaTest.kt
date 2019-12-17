@@ -33,6 +33,7 @@ class LambdaTest {
             return p()
         }
         assertThat(supplier { emptyList<String>() }).isInstanceOf(List::class.java)
+        assertThat(supplier { emptyList<String>(); 1 }).isInstanceOf(Integer::class.java)
 
         fun predicator(p: (() -> Boolean)? = null): Boolean {
             return p?.invoke() ?: false
