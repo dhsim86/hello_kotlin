@@ -1,7 +1,9 @@
 package com.dongho.dev.lecture.delegate
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
 class DelegatePropertyTest {
@@ -124,4 +126,48 @@ class DelegatePropertyTest {
 
         println("${p.name} - age: ${p.age}, salary: ${p.salary}")
     }
+
+    @Test
+    @DisplayName("setter delegate by test with observable")
+    fun setterDelegateByObservableTest() {
+
+        class Person(val name: String, _age: Int, _salary: Int) {
+            var age: Int by Delegates.observable(_age) {
+                prop, old, new -> println("${prop.name} set! $old -> $new")
+            }
+            var salary: Int by Delegates.observable(_salary) {
+                prop, old, new -> println("${prop.name} set! $old -> $new")
+            }
+        }
+
+        """
+        age set! 20 -> 21
+        salary set! 2000 -> 2100
+        name - age: 21, salary: 2100
+        """
+        val p = Person("name", 20, 2000)
+        p.age = 21
+        p.salary = 2100
+
+        println("${p.name} - age: ${p.age}, salary: ${p.salary}")
+    }
+
+    @Test
+    @DisplayName("setter getter delegate using map")
+    fun setterGetterDelegateUsingMapTest() {
+
+        class Person(val map: MutableMap<String, Any>) {
+            var name: String by map
+            var age: Int by map
+            var salary: Int by map
+        }
+
+        val p = Person(mutableMapOf())
+        p.name = "test"
+        p.age = 20
+        p.salary = 2000
+
+        assertThat(p.map).hasSize(3).containsExactlyEntriesOf(mapOf("name" to "test", "age" to 20, "salary" to 2000))
+    }
+
 }
