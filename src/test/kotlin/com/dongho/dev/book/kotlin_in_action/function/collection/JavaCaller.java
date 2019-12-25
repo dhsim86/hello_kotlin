@@ -1,6 +1,6 @@
-package com.dongho.dev.book.kotlin_in_action.function;
+package com.dongho.dev.book.kotlin_in_action.function.collection;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.util.Arrays;

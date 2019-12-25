@@ -1,6 +1,6 @@
 @file:JvmName("test")
 
-package com.dongho.dev.book.kotlin_in_action.function
+package com.dongho.dev.book.kotlin_in_action.function.collection
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
