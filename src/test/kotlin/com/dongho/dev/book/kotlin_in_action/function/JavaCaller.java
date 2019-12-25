@@ -20,4 +20,14 @@ public class JavaCaller {
         assertThat(test.joinToString(list, "; ", "(", ")" )).isEqualTo("(1; 2; 3)");
     }
 
+    @Test
+    @DisplayName("joinToString2 Test in Java")
+    public void joinToString2Test() {
+        List<Integer> list = Arrays.asList(1, 2, 3);
+
+        assertThat(test.joinToString2(list, ", ")).isEqualTo("1, 2, 3");
+        assertThat(test.joinToString2(list, ", ", "(", ")")).isEqualTo("(1, 2, 3)");
+        assertThat(test.joinToString2(list, "; ", "(", ")" )).isEqualTo("(1; 2; 3)");
+    }
+
 }
