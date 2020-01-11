@@ -149,4 +149,26 @@ class DataClassTest {
         assertThat(client.postalCode).isEqualTo(client2.postalCode)
     }
 
+    @Test
+    @DisplayName("data class - primary constructor property Test")
+    fun dataClassPrimaryConstructorPropertyTest() {
+        data class Client(val name: String, val postalCode: Int) {
+            var number: Int = 0
+
+            constructor(name: String, postalCode: Int, number: Int): this(name, postalCode) {
+                this.number = number
+            }
+        }
+
+        val client = Client("test", 1234, 1)
+        val client2 = Client("test", 1234, 2)
+
+        assertThat(client !== client2).isTrue()
+
+        assertThat(client == client2).isTrue()
+        assertThat(client.name == client2.name).isTrue()
+        assertThat(client.postalCode == client2.postalCode).isTrue()
+        assertThat(client.number != client2.number).isTrue()
+    }
+
 }
