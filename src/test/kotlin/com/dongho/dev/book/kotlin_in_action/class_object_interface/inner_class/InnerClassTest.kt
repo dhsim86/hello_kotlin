@@ -7,12 +7,12 @@ import java.io.Serializable
 
 interface State: Serializable
 
-interface View {
+private interface View {
     fun getCurrentState(): State?
     fun restoreState(state: State)
 }
 
-class Button(val name: String): View {
+private class Button(val name: String): View {
 
     inner class ButtonState(val data: String): State {
         fun getName() = name
